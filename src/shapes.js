@@ -48,7 +48,7 @@ Shape.prototype.move = function (context, shapesList) {
         let intersection = window.myMath.checkIntersection(borders, nextPointLocation);
         if (!intersection.intersected){
             this.moveAngle = window.myMath.changeAngle(intersection.closestSegment.A,
-                intersection.closestSegment.B, nextPointLocation, this.moveAngle);
+                intersection.closestSegment.B, this.moveAngle);
         }
 
         //Bounce from other shapes
@@ -56,7 +56,7 @@ Shape.prototype.move = function (context, shapesList) {
             let intersection = window.myMath.checkIntersection(shapesList[j].path, nextPointLocation);
             if (intersection.intersected){
                 this.moveAngle = window.myMath.changeAngle(intersection.closestSegment.A,
-                    intersection.closestSegment.B, nextPointLocation, this.moveAngle);
+                    intersection.closestSegment.B, this.moveAngle);
             }
         }
     }

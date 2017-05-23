@@ -54,26 +54,8 @@
         }
     };
 
-    myMath.changeAngle = function (vertex1, vertex2, point, moveAngle) {
-        let angleSegment, angleVector;
-        let point2 = {
-            x: point.x + Math.cos(moveAngle),
-            y: point.y + Math.sin(moveAngle)
-        };
-        if (vertex2.x - vertex1.x == 0){
-            angleSegment = 0;
-        }else {
-            angleSegment = Math.atan((vertex2.y - vertex1.y) / (vertex2.x - vertex1.x));
-        }
-
-        if (point2.x - point.x == 0){
-            angleVector = 0;
-        }else {
-            angleVector =  Math.atan((point2.y - point.y) / (point2.x - point.x));
-        }
-
-        let angleDiff = Math.PI / 2 - (angleSegment - angleVector);
-        return (angleDiff * 2 + Math.PI + angleVector) % (Math.PI * 2);
+    myMath.changeAngle = function (vertex1, vertex2, moveAngle) {
+        return (2 * Math.atan2(vertex2.x - vertex1.x, vertex2.y - vertex1.y) - moveAngle - Math.PI) % (Math.PI * 2);
     };
 
     window.myMath = myMath;
